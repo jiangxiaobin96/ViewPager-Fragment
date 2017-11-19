@@ -1,10 +1,13 @@
 package com.example.asus.newcontest;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -19,7 +22,7 @@ import java.util.List;
  * Created by ASUS on 2017/11/8.
  */
 
-public class fragment1 extends android.support.v4.app.Fragment implements ImageBarnnerViewGroup.ImageBarnenrLister{
+public class fragment1 extends android.support.v4.app.Fragment implements ImageBarnnerViewGroup.ImageBarnenrLister {
 
     private ImageBarnnerViewGroup mGroup;
 
@@ -61,6 +64,34 @@ public class fragment1 extends android.support.v4.app.Fragment implements ImageB
         ListView listView = (ListView) view.findViewById(R.id.list_view);
         listView.setAdapter(adapter);
         setListViewHeightBasedOnChildren(listView);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position){
+                    case 0:
+                        Uri uri1 = Uri.parse("http://media.people.com.cn/n1/2017/1026/c40606-29609127.html");
+                        Intent intent1 = new Intent(Intent.ACTION_VIEW,uri1);
+                        startActivity(intent1);
+                        break;
+                    case 1:
+                        Uri uri2 = Uri.parse("http://news.youth.cn/gn/201710/t20171021_10901866.htm");
+                        Intent intent2 = new Intent(Intent.ACTION_VIEW,uri2);
+                        startActivity(intent2);
+                        break;
+                    case 2:
+                        Uri uri3 = Uri.parse("http://cpc.people.com.cn/19th/n1/2017/1018/c414305-29593002.html");
+                        Intent intent3 = new Intent(Intent.ACTION_VIEW,uri3);
+                        startActivity(intent3);
+                        break;
+                    case 3:
+                        Uri uri4 = Uri.parse("http://jhsjk.people.cn/");
+                        Intent intent4 = new Intent(Intent.ACTION_VIEW,uri4);
+                        startActivity(intent4);
+                        break;
+                    default: break;
+                }
+            }
+        });
         return view;
     }
 
